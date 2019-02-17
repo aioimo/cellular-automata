@@ -24,11 +24,11 @@
 }
 
 .cell {
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   border: 1px solid black;
   display: inline-block;
-  margin: 5px;
+  margin: 3px;
 }
 
 .dashboard {
