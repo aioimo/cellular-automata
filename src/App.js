@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       inProgress: false,
-      automata: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+      automata: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
       repeatingAt: null
     };
   }
@@ -18,7 +18,7 @@ class App extends Component {
   reset = () => {
     this.setState({
       inProgress: false,
-      automata: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+      automata: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
       repeatingAt: null
     });
   };
@@ -67,13 +67,14 @@ class App extends Component {
 
   checkIfRepeatState = state => {
     let nextState = JSON.stringify(state);
+    if (JSON.stringify(this.state.automata).indexOf(nextState) === -1)
+      return null;
     for (let i = 0; i < this.state.automata.length; i++) {
       let previousState = JSON.stringify(this.state.automata[i]);
       if (nextState === previousState) {
         return this.state.automata.length - i;
       }
     }
-    return null;
   };
 
   render() {
