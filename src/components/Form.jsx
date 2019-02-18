@@ -1,33 +1,17 @@
 import React, { Component } from "react";
-import "../App.css";
 
 class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      numberOfCells: 6
-    };
-  }
-
-  handleChange = e => {
-    e.preventDefault();
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
   render() {
-    console.log(this.state.numberOfCells);
     return (
-      <form>
-        <label htmlFor="numberOfCells">Number of Cells</label>
-        <input
-          type="number"
-          name="numberOfCells"
-          value={this.state.numberOfCells}
-          onChange={this.handleChange}
-        />
-      </form>
+      <div>
+        <form onSubmit={this.props.updateNumberCells}>
+          <label htmlFor="numberOfCells">Number of Cells</label>
+          <input type="number" name="numberOfCells" />
+        </form>
+        <button onClick={this.props.toggleNumberOfColors}>
+          Toggle Number of Colors {this.props.numberOfColors}
+        </button>
+      </div>
     );
   }
 }

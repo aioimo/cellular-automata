@@ -1,22 +1,19 @@
 import React, { Component } from "react";
-import "../App.css";
+
+import { colorCoder } from "../utils/config";
 
 class AutomataList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   renderEntireList = () => {
     let automata = this.props.automata;
     return automata.map((iteration, iterationIndex) => (
       <div key={iterationIndex} className="iteration">
         {" "}
-        {automata.length - iterationIndex}
+        <span className="iteration-number">{iterationIndex}</span>
         {iteration.map((cell, cellIndex) => (
           <div
             key={cellIndex}
             onClick={() => this.props.handleCellChange(cellIndex)}
-            className={cell ? "cell active" : "cell"}
+            className={colorCoder[cell]}
           />
         ))}
       </div>
@@ -24,7 +21,7 @@ class AutomataList extends Component {
   };
 
   render() {
-    return <div className="automata-list">{this.renderEntireList()}</div>;
+    return <div className="AutomataList">{this.renderEntireList()}</div>;
   }
 }
 
